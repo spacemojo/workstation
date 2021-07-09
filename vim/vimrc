@@ -1,0 +1,131 @@
+
+syntax on
+filetype plugin indent on
+
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'vim-airline/vim-airline'
+" Plug 'voldikss/vim-floaterm'
+" Plug 'ptzz/lf.vim'
+
+Plug 'baverman/vial'
+Plug 'baverman/vial-http'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'morhetz/gruvbox'
+
+" Initialize plugin system
+call plug#end()
+
+" lf - display hidden files
+let g:lf_command_override = 'lf -command "set hidden"'
+
+set hidden
+
+set backspace=indent,eol,start
+
+let mapleader = "\<Space>"
+
+set number
+set numberwidth=4
+set nowrap
+set relativenumber
+set nofoldenable
+set hlsearch
+set cursorcolumn
+set cursorline
+set showmatch matchtime=3
+set splitbelow splitright
+set noerrorbells
+set scrolloff=10
+set guicursor=
+
+" Folding
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
+" Toggle text wrapping
+nnoremap <leader>n :set nowrap!<CR>
+
+" JSON formatting with q
+nnoremap <leader>j :%!jq --indent 2 '.'<CR>
+
+" Tabs ---------------------------------------------------
+nnoremap <leader>t :tabnew<CR>
+nnoremap <leader>r :tabprev<CR>
+nnoremap <leader>y :tabnext<CR>
+nnoremap <leader>g :tabclose<CR>
+nnoremap <leader>f :tabfirst<CR>
+nnoremap <leader>h :tablast<CR>
+" Tabs ---------------------------------------------------
+
+" Comment out a line 
+nnoremap <leader>/ I//<Esc>j
+" Uncomment a line
+nnoremap <leader>; ^xx<Esc>j
+
+" Save & quit
+nnoremap <leader>w :w<CR>zz
+nnoremap <leader>q :q<CR>
+nnoremap <leader>a :wqa<CR>
+
+" Git - squash remap when rebasing in interactive mode
+nnoremap <leader>s 0dwisquash <Esc>
+
+" Disable the arrow keys
+nnoremap <Up> <NOP>
+nnoremap <Down> <NOP>
+nnoremap <Left> <NOP>
+nnoremap <Right> <NOP>
+
+" Escape on the home row
+inoremap kj <Esc>
+" Go lang error verification block
+inoremap ii <Esc>xxiif err != nil {<CR><CR>}<Esc>:w<CR>ki
+" Insert UUID V4 in the code
+inoremap uud <Esc>:r!uuidgen<CR>d$k$pjddk$a
+" Quicker breakpoints when debugging with dlv
+inoremap rrr runtime.Breakpoint()
+
+" Splits -------------------------------------------------------------------------------------
+" Terminal window in the right pane
+nnoremap <leader>p :rightb vert term<CR>
+" Terminal window in the bottom pane
+nnoremap <leader>z :term<CR>
+" Vertical split on the right
+nnoremap <leader>l :vs<CR>
+" Horizontal split at the bottom
+nnoremap <leader>m :sp<CR>
+
+" Navigation 
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Resizing 
+nnoremap <silent> <leader>x :vertical resize +3<CR>
+nnoremap <silent> <leader>v :vertical resize -3<CR>
+nnoremap <silent> <leader>d :resize +3<CR>
+nnoremap <silent> <leader>c :resize -3<CR>
+" Splits ----------------------------------------------------
+
+" Color Scheme ----------------------------------------------
+colorscheme gruvbox
+set background=dark
+" Color Scheme ----------------------------------------------
+
+" Tabs ------------------------------------------------------
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" vim-go
+let g:go_def_mode='gopls'
+
