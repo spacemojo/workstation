@@ -1,0 +1,75 @@
+#!/bin/bash
+
+add() {
+  echo "Adding existing branch to worktree"
+  echo "Branch name : "
+  read -r branch 
+  echo "Adding $branch to worktree"
+  git worktree add ../"$branch"
+  cd ../"$branch" || exit
+}
+
+add_new() {
+  echo "Adding new branch to worktree"
+  echo "Branch name : "
+  read -r branch 
+  echo "Adding $branch to worktree"
+  git worktree add -b "$branch" ../"$branch"
+  cd ../"$branch" || exit
+  git push -u origin "$branch"
+}
+
+list() {
+  echo "Listing branches in current worktree"
+  git worktree list
+}
+
+fetch() {
+  echo "Fetching from remote"
+  echo "Branch : "
+  read -r branch
+  git fetch origin +refs/heads/*:refs/heads/* --prune
+  cd ../"$branch" && git reset --hard && cd ../bare || exit
+}
+
+remove() {
+  echo "Removing worktree branch"
+  read -r branch
+  echo "Removing $branch from the worktree - Warning! Command is forced!!"
+  git worktree remove ../"$branch" --force 
+}
+
+press_enter() {
+  echo ""
+  echo -n "   Press Enter to continue "
+  read -r
+  clear
+}
+
+incorrect_selection() {
+  echo "Incorrect selection! Try again."
+}
+
+until [ "$selection" = "0" ]; do
+  clear
+  echo ""
+  echo "1 - Add existing branch to worktree"
+  echo "2 - Add new branch to worktree and push to remote"
+  echo "3 - List the current branches in the worktree"
+  echo "4 - Fetch from remote"
+  echo "5 - Remove branch from worktree"
+  echo "0 - Exit"
+  echo ""
+  echo -n "  Enter selection: "
+  read -r selection
+  echo ""
+  case $selection in
+    1 ) clear ; add ; press_enter ;;
+    2 ) clear ; add_new ; press_enter ;;
+    3 ) clear ; list ; press_enter ;;
+    4 ) clear ; fetch ; press_enter ;;
+    5 ) clear ; remove ; press_enter ;;
+    0 ) clear ; exit ;;
+    * ) clear ; incorrect_selection ; press_enter ;;
+  esac
+done
