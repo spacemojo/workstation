@@ -13,5 +13,7 @@ echo "Installing lf"
 git clone git@github.com:gokcehan/lf.git ~/Source/lf
 cd ~/Source/lf && go install 
 
+echo "Linking git message template"
+ln -s ./git/gitmessage ~/.gitmessage
 
 # git config --global commit.template ~/.gitmessage
