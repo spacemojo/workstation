@@ -1,7 +1,7 @@
 #!/bin/bash
 
 prompt_for_jira() {
-  dialog --inputbox "JIRA" 10 10 "SAAS-" 2>jira.txt 
+  dialog --inputbox "JIRA" 10 10 "" 2>jira.txt 
   JIRA=$(cat jira.txt)
   rm jira.txt
 }
@@ -30,9 +30,16 @@ prompt_for_scope() {
   rm scope.txt
 }
 
+prompt_for_message() {
+  dialog --inputbox "Commit message body" 0 0 2>message.txt
+  MESSAGE=$(cat message.txt)
+  rm message.txt
+}
+
 display_message() {
   clear
-  echo "$JIRA - $CTYPE($SCOPE):"
+  echo "$JIRA - $CTYPE($SCOPE): $MESSAGE"
+  
 }
 
 validate() {
@@ -68,7 +75,17 @@ validate() {
       1) exit 127 ;;
       255) exit 0 ;;
     esac
-
+  fi
+  if [ -z "$MESSAGE" ]
+  then
+    dialog --title "Validation error" \
+      --yesno "Message cannot be empty, retry ?" 0 0
+    response=$?
+    case $response in
+      0) prompt_for_message ; validate ;;
+      1) exit 127 ;;
+      255) exit 0 ;;
+    esac
   fi
   display_message
 }
@@ -76,5 +93,6 @@ validate() {
 prompt_for_jira
 prompt_for_type
 prompt_for_scope
+prompt_for_message
 validate
 
