@@ -41,7 +41,7 @@ remove() {
 }
 
 display_menu() {
-  dialog --menu "Git worktree" 0 0 5 \
+  dialog --menu "Git worktree tools" 0 0 5 \
     "1" "Add existing branch to worktree" \
     "2" "Add new branch to worktree and push to remote"  \
     "3" "List the current branches in the worktree" \
