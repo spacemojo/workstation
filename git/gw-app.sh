@@ -26,7 +26,7 @@ fetch() {
     --menu "Branch" 0 0 0 $(git worktree list | awk 'NR!=1{print substr($3, 2, length($3) -2) " " $2 }') 2>branch.txt
   branch=$(cat branch.txt)
   rm branch.txt
-  msg=$(git fetch origin +refs/heads/*:refs/heads/* --prune && cd ../"$branch" && git reset --hard && cd ../bare)
+  msg=$(git fetch origin +refs/heads/*:refs/heads/* --prune && cd ../"$branch" && git reset --hard && git pull && cd ../bare)
   dialog --msgbox "$msg" 0 0  
 }
 
