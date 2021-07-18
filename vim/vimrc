@@ -8,16 +8,16 @@ filetype plugin indent on
 call plug#begin('~/.vim/plugged')
 
 " Plug 'Valloric/YouCompleteMe'
-" Plug 'vim-airline/vim-airline'
-" Plug 'voldikss/vim-floaterm'
-" Plug 'ptzz/lf.vim'
 
+Plug 'francoiscabrol/ranger.vim'
 Plug 'baverman/vial'
 Plug 'baverman/vial-http'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'morhetz/gruvbox'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/0.x' }
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
 " Initialize plugin system
 call plug#end()
@@ -54,15 +54,13 @@ set foldlevel=2
 " Toggle text wrapping
 nnoremap <leader>n :set nowrap!<CR>
 
-" JSON formatting with q
-nnoremap <leader>j :%!jq --indent 2 '.'<CR>
-
 " Tabs ---------------------------------------------------
 nnoremap <leader>t :tabnew<CR>
 nnoremap <leader>r :tabprev<CR>
 nnoremap <leader>y :tabnext<CR>
 nnoremap <leader>g :tabclose<CR>
-nnoremap <leader>f :tabfirst<CR>
+" Conflicts with ranger's default setting
+" nnoremap <leader>f :tabfirst<CR>
 nnoremap <leader>h :tablast<CR>
 " Tabs ---------------------------------------------------
 
@@ -96,11 +94,11 @@ inoremap rrr runtime.Breakpoint()
 
 " Splits -------------------------------------------------------------------------------------
 " Terminal window in the right pane
-nnoremap <leader>p :rightb vert term<CR>
+nnoremap <leader>l :rightb vert term<CR>
 " Terminal window in the bottom pane
 nnoremap <leader>z :term<CR>
 " Vertical split on the right
-nnoremap <leader>l :vs<CR>
+" nnoremap <leader>p :vs<CR>
 " Horizontal split at the bottom
 nnoremap <leader>m :sp<CR>
 
@@ -123,10 +121,15 @@ set background=dark
 " Color Scheme ----------------------------------------------
 
 " Tabs ------------------------------------------------------
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 " vim-go
 let g:go_def_mode='gopls'
+
+" vim-ranger
+" opening ranger instead of netrw when opening dirs
+" open ranger when vim open a directory
+let g:ranger_replace_netrw = 1 
 
