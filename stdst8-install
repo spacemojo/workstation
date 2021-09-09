@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# This installs the necessary scripts, configs and folders to then run the update script.
+
+# Display logo
+# Litlle bit of ascii art from http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Fraktur&t=stdst8
+cat stdst8-logo                                                                                                                  
+
+die() {
+  local _ret="${2:-1}"
+  test "${_PRINT_HELP:-no}" = yes && print_help >&2
+  echo "$1" >&2
+  exit "${_ret}"
+}
+
+print_help() {
+  printf '%s\n' "Installs the Standard State workstation tooling"
+  printf 'Usage: %s [-h|--help] [-v|--version]\n' "$0"
+  printf '\t%s\n' "-h, --help: Prints help"
+  printf '\t%s\n' "-v, --version: Prints version"
+}
+
+_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" || die "Couldn't determine the script's running directory." 2
+
+# Installation
+echo "Installing the stdst8 tooling on this workstation"
+
+# Sourcing the lib
+# shellcheck source=lib/stdst8-functions.sh
+source "${_SCRIPT_DIR}/lib/stdst8-functions.sh"
+
+# Local bin folder
+echo "Validating the local bin folder, creating if required"
+stdst8.install_local_bin_folder
+echo
+
+# Installing the update file
+echo "Installing the update script in local bin and ~/.bashrc"
+stdst8.install_update_script
+echo
+

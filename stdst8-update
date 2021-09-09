@@ -1,0 +1,7 @@
+#!/bin/bash 
+
+cat stdst8-logo 
+
+echo "Updating stdst8 tooling"
+
+echo "Update complete"

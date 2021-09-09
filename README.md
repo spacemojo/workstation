@@ -6,13 +6,15 @@ I am starting out at a new job, and when we talk new job, we talk new workstatio
 
 Obviously, I won't share what is confidential and directly related to my employer. So the scope of this is around the tooling I use for general software development, architecture, devops and documentation. This is gonna be fun.
 
-## tmux, tmux-session
+## Git
+
+* [gitmessage](git/gitmessage) : Message template for conventional commits
 
 ## Docker
 
 ## Rust
 
-## GO
+## Go
 
 ## AWS
 
