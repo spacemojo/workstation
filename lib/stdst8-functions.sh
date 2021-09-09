@@ -26,13 +26,20 @@ stdst8.install_update_script() {
     chmod +x "${REPO_DIR}/${UPDATE_SCRIPT}" 
   fi
 
-  C=$(grep "${UPDATE_SCRIPT}" ${HOME}/.bashrc | wc -l)
-  if [[ ${C} -eq 1 ]]; then
-    echo "No bashrc update required"
-  else 
-    echo "${REPO_DIR}/${UPDATE_SCRIPT}" >> ${HOME}/.bashrc
-    echo "${HOME}/.bashrc updated"
+  # Find out which shell 
+  TARGET_RC="${HOME}/.bashrc"
+  if [[ "${SHELL}" = "/bin/zsh" ]]; then
+    TARGET_RC="${HOME}/.zshrc"
   fi
+
+  C=$(grep "${UPDATE_SCRIPT}" "${TARGET_RC}" | wc -l)
+  if [[ ${C} -eq 1 ]]; then
+    echo "No rc update required to ${TARGET_RC}"
+  else 
+    echo "${REPO_DIR}/${UPDATE_SCRIPT}" >> ${TARGET_RC}
+    echo "${TARGET_RC} updated"
+  fi
+  
 }
 
 stdst8.clone_repo() {
@@ -71,3 +78,13 @@ stdst8.install_terraform() {
   ln -s "${LOCAL_BIN}/terraform-v${TF_VERSION}" "${LOCAL_BIN}/terraform"
   terraform version
 }
+
+stdst8.git_setup() {
+  echo "GIT setup"
+  echo "          -> rebase on pull"
+  git config pull.rebase true
+  echo "          -> commit message template"
+  
+}
+
+
