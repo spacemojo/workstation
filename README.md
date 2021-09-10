@@ -12,12 +12,18 @@ Obviously, I won't share what is confidential and directly related to my employe
 
 ## Docker
 
-## Rust
-
 ## Go
+
+Go version 1.17 is installed as per the recommended procedure on [golang.org](https://golang.org).
 
 ## AWS
 
-## Terraform, Terragrunt
+## Terraform
+
+Terraform version 1.0.6 is installed in ~/.local/bin as a symlink to the versioned binary in the same folder.
+```
+terraform -> ~/.local/bin/terraform-v1.0.6*
+terraform-v1.0.6*
+```
 
 ## Vim
