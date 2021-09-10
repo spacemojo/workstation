@@ -1,7 +1,15 @@
 #!/bin/bash 
 
-cat stdst8-logo 
+# readonly REPO_DIR="${HOME}/.stdst8"
+REPO_DIR="/home/fred/Source/standardstate/workstation/develop"
+cat ${REPO_DIR}/stdst8-logo 
+
+# Sourcing the lib
+# shellcheck source=lib/stdst8-functions.sh
+source "${REPO_DIR}/lib/stdst8-functions.sh"
 
 echo "Updating stdst8 tooling"
+
+stdst8.update_terraform
 
 echo "Update complete"

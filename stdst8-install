@@ -1,26 +1,16 @@
 #!/bin/bash
 
+# -e  Exit immediately if a command exits with a non-zero status.
+set -e
+
 # This installs the necessary scripts, configs and folders to then run the update script.
+
+_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" || exit 1 
+echo "Script directory : ${_SCRIPT_DIR}"
 
 # Display logo
 # Litlle bit of ascii art from http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Fraktur&t=stdst8
-cat stdst8-logo                                                                                                                  
-
-die() {
-  local _ret="${2:-1}"
-  test "${_PRINT_HELP:-no}" = yes && print_help >&2
-  echo "$1" >&2
-  exit "${_ret}"
-}
-
-print_help() {
-  printf '%s\n' "Installs the Standard State workstation tooling"
-  printf 'Usage: %s [-h|--help] [-v|--version]\n' "$0"
-  printf '\t%s\n' "-h, --help: Prints help"
-  printf '\t%s\n' "-v, --version: Prints version"
-}
-
-_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" || die "Couldn't determine the script's running directory." 2
+cat ${_SCRIPT_DIR}/stdst8-logo                                                                                                                  
 
 # Installation
 echo "Installing the stdst8 tooling on this workstation"
@@ -39,3 +29,12 @@ echo "Installing the update script in local bin and ~/.bashrc"
 stdst8.install_update_script
 echo
 
+# Clone the repo to ~/.stdst8
+echo "Cloning stdst8 tooling repo"
+stdst8.clone_repo
+
+# Trigger the update
+echo "Restarting ${SHELL} to trigger the update"
+exec ${SHELL}
+
+echo "Spaceballs - the script"
