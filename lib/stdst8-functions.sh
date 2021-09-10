@@ -1,9 +1,8 @@
 #!/bin/bash 
 
-readonly LOCAL_BIN="${HOME}/.local/bin"
-readonly UPDATE_SCRIPT="stdst8-update"
-# readonly REPO_DIR="${HOME}/.stdst8"
-REPO_DIR="/home/fred/Source/standardstate/workstation/develop"
+LOCAL_BIN="${HOME}/.local/bin"
+UPDATE_SCRIPT="stdst8-update"
+REPO_DIR="${HOME}/.stdst8"
 
 readonly TF_VERSION="1.0.6"
 readonly TF_ZIP_NAME="terraform_${TF_VERSION}_linux_amd64.zip"
@@ -19,22 +18,26 @@ stdst8.install_local_bin_folder() {
 }
 
 stdst8.install_update_script() {
-  echo "Copying from ${_SCRIPT_DIR}/${UPDATE_SCRIPT} to ${LOCAL_BIN}/${UPDATE_SCRIPT}"
-  cp ${_SCRIPT_DIR}/${UPDATE_SCRIPT} ${LOCAL_BIN}/${UPDATE_SCRIPT}
+  echo "Copying from ${_SCRIPT_DIR}/${UPDATE_SCRIPT} to ${REPO_DIR}/${UPDATE_SCRIPT}"
+  cp ${_SCRIPT_DIR}/${UPDATE_SCRIPT} ${REPO_DIR}/${UPDATE_SCRIPT}
   if [[ ${?} ]];then
+
     echo "Script installed, validating execution"
-    if [[ -x ${LOCAL_BIN}/${UPDATE_SCRIPT} ]]; then
+    if [[ -x ${REPO_DIR}/${UPDATE_SCRIPT} ]]; then
       echo "Update script is executable"
-      C=$(grep "${UPDATE_SCRIPT}" ${HOME}/.bashrc | wc -l)
-      if [[ ${C} -eq 1 ]]; then
-        echo "No bashrc update required"
-      else 
-        echo "${UPDATE_SCRIPT}" >> ${HOME}/.bashrc
-        echo "${HOME}/.bashrc updated"
-      fi
     else 
       echo "Update script cannot be executed"
+      chmod +x "${REPO_DIR}/${UPDATE_SCRIPT}" 
     fi
+
+    C=$(grep "${UPDATE_SCRIPT}" ${HOME}/.bashrc | wc -l)
+    if [[ ${C} -eq 1 ]]; then
+      echo "No bashrc update required"
+    else 
+      echo "${REPO_DIR}/${UPDATE_SCRIPT}" >> ${HOME}/.bashrc
+      echo "${HOME}/.bashrc updated"
+    fi
+
   else 
     echo "An error occurred when installing update script"
     exit 1 

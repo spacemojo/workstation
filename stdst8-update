@@ -1,8 +1,9 @@
 #!/bin/bash 
 
-# readonly REPO_DIR="${HOME}/.stdst8"
-REPO_DIR="/home/fred/Source/standardstate/workstation/develop"
+REPO_DIR="${HOME}/.stdst8"
 cat ${REPO_DIR}/stdst8-logo 
+
+cd ${REPO_DIR}/ && git pull
 
 # Sourcing the lib
 # shellcheck source=lib/stdst8-functions.sh

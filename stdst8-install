@@ -24,14 +24,14 @@ echo "Validating the local bin folder, creating if required"
 stdst8.install_local_bin_folder
 echo
 
+# Clone the repo to ~/.stdst8
+echo "Cloning stdst8 tooling repo"
+stdst8.clone_repo
+
 # Installing the update file
 echo "Installing the update script in local bin and ~/.bashrc"
 stdst8.install_update_script
 echo
-
-# Clone the repo to ~/.stdst8
-echo "Cloning stdst8 tooling repo"
-stdst8.clone_repo
 
 # Trigger the update
 echo "Restarting ${SHELL} to trigger the update"
