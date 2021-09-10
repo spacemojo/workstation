@@ -29,7 +29,7 @@ echo "Cloning stdst8 tooling repo"
 stdst8.clone_repo
 
 # Installing the update file
-echo "Installing the update script in local bin and ~/.bashrc"
+echo "Setting automatic updates on shell startup in ~/.bashrc"
 stdst8.install_update_script
 echo
 
@@ -37,4 +37,5 @@ echo
 echo "Restarting ${SHELL} to trigger the update"
 exec ${SHELL}
 
+# This line will never be printed !!!
 echo "Spaceballs - the script"

@@ -18,30 +18,21 @@ stdst8.install_local_bin_folder() {
 }
 
 stdst8.install_update_script() {
-  echo "Copying from ${_SCRIPT_DIR}/${UPDATE_SCRIPT} to ${REPO_DIR}/${UPDATE_SCRIPT}"
-  cp ${_SCRIPT_DIR}/${UPDATE_SCRIPT} ${REPO_DIR}/${UPDATE_SCRIPT}
-  if [[ ${?} ]];then
-
-    echo "Script installed, validating execution"
-    if [[ -x ${REPO_DIR}/${UPDATE_SCRIPT} ]]; then
-      echo "Update script is executable"
-    else 
-      echo "Update script cannot be executed"
-      chmod +x "${REPO_DIR}/${UPDATE_SCRIPT}" 
-    fi
-
-    C=$(grep "${UPDATE_SCRIPT}" ${HOME}/.bashrc | wc -l)
-    if [[ ${C} -eq 1 ]]; then
-      echo "No bashrc update required"
-    else 
-      echo "${REPO_DIR}/${UPDATE_SCRIPT}" >> ${HOME}/.bashrc
-      echo "${HOME}/.bashrc updated"
-    fi
-
+  echo "Setting automatic update on shell startup"
+  if [[ -x ${REPO_DIR}/${UPDATE_SCRIPT} ]]; then
+  echo "Update script is executable"
   else 
-    echo "An error occurred when installing update script"
-    exit 1 
-  fi 
+    echo "Update script cannot be executed"
+    chmod +x "${REPO_DIR}/${UPDATE_SCRIPT}" 
+  fi
+
+  C=$(grep "${UPDATE_SCRIPT}" ${HOME}/.bashrc | wc -l)
+  if [[ ${C} -eq 1 ]]; then
+    echo "No bashrc update required"
+  else 
+    echo "${REPO_DIR}/${UPDATE_SCRIPT}" >> ${HOME}/.bashrc
+    echo "${HOME}/.bashrc updated"
+  fi
 }
 
 stdst8.clone_repo() {
