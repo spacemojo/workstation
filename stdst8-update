@@ -28,9 +28,16 @@ source "${_SCRIPT_DIR}/lib/stdst8-go.sh"
 # shellcheck source=lib/stdst8-functions.sh
 source "${_SCRIPT_DIR}/lib/stdst8-vim.sh"
 
+# Sourcing the lib for the go installation
+# shellcheck source=lib/stdst8-functions.sh
+source "${_SCRIPT_DIR}/lib/stdst8-brave.sh"
+
 # Installing Go
 stdst8.install_go
 
 # Installing Vim and related tooling
 stdst8.install_vim_and_tooling
+
+# Installing Brave browser
+stdst8.install_brave_browser
 
