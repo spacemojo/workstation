@@ -8,6 +8,10 @@ readonly TF_VERSION="1.0.6"
 readonly TF_ZIP_NAME="terraform_${TF_VERSION}_linux_amd64.zip"
 readonly TF_DOWNLOAD="https://releases.hashicorp.com/terraform/${TF_VERSION}/${TF_ZIP_NAME}"
 
+readonly GO_VERSION="1.17.1"
+readonly GO_TAR="go${GO_VERSION}.linux-amd64.tar.gz"
+readonly GO_DOWNLOAD="https://golang.org/dl/${GO_TAR}"
+
 stdst8.install_local_bin_folder() {
   if [[ -d ${LOCAL_BIN} ]]; then
     echo "Local bin folder exists"
@@ -70,4 +74,11 @@ stdst8.install_terraform() {
   mv "${LOCAL_BIN}/terraform" "${LOCAL_BIN}/terraform-v${TF_VERSION}"
   ln -s "${LOCAL_BIN}/terraform-v${TF_VERSION}" "${LOCAL_BIN}/terraform"
   terraform version
+}
+
+stdst8.install_go() {
+  C=$(which go | wc -l)
+#rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.1.linux-amd64.tar.gz
+#export PATH=$PATH:/usr/local/go/bin
+#go version
 }
