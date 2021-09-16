@@ -39,20 +39,22 @@ stdst8.install_local_source_folder() {
 stdst8.clone_repo() {
   echo "${ST8_PREFIX}Repo dir"
   if [[ -d "${REPO_DIR}" ]]; then
-    echo "${REPO_DIR} exists, pulling latest changes"
+    echo "${ST8_LOG}${REPO_DIR} exists, pulling latest changes"
     cd ${REPO_DIR} && git pull && cd ${_SCRIPT_DIR}
   else 
     git clone git@github.com:spacemojo/workstation.git ${REPO_DIR}
+    echo "${ST8_LOG}Repo cloned"
   fi
   echo
 }
 
 stdst8.install_update_script() {
-  echo "Setting automatic update on shell startup"
+
+  echo "${ST8_PREFIX}Setting automatic update on shell startup"
   if [[ -x ${REPO_DIR}/${UPDATE_SCRIPT} ]]; then
-  echo "Update script is executable"
+    echo "${ST8_LOG}Update script is executable"
   else 
-    echo "Update script cannot be executed"
+    echo "${ST8_LOG}Update script cannot be executed, changing mode"
     chmod +x "${REPO_DIR}/${UPDATE_SCRIPT}" 
   fi
 

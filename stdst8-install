@@ -34,15 +34,11 @@ stdst8.install_local_config_folder
 stdst8.install_local_source_folder
 
 # Clone the repo to ~/.stdst8
-#echo "Cloning stdst8 tooling repo"
-#stdst8.clone_repo
-#echo 
-#
-## Installing the update file
-#echo "Setting automatic updates on shell startup in rc file"
-#stdst8.install_update_script
-#echo
-#
+stdst8.clone_repo
+
+# Installing the update file
+stdst8.install_update_script
+
 ## Trigger the update
 #echo "Restarting ${SHELL} to trigger the update"
 #exec ${SHELL}
