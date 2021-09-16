@@ -1,16 +1,36 @@
-#!/bin/bash 
+#!/bin/bash
 
-REPO_DIR="${HOME}/.stdst8"
-cat ${REPO_DIR}/stdst8-logo 
+# The update script takes care of the following : 
+# Go installation : 
+#   - 
+# Vim installation : 
+#   - Plug
+#   - Yarnpkg (for the prettier installation)
+ 
 
-cd ${REPO_DIR}/ && git pull
+# -e  Exit immediately if a command exits with a non-zero status.
+set -e
 
-# Sourcing the lib
+_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" || exit 1 
+
+# Litlle bit of ascii art from http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Fraktur&t=stdst8
+cat ${_SCRIPT_DIR}/stdst8-logo                                                                                                                  
+
+# Sourcing the vars
+# shellcheck source=lib/stdst8-variables.sh
+source "${_SCRIPT_DIR}/lib/stdst8-variables.sh"
+
+# Sourcing the lib for the go installation
 # shellcheck source=lib/stdst8-functions.sh
-source "${REPO_DIR}/lib/stdst8-functions.sh"
+source "${_SCRIPT_DIR}/lib/stdst8-go.sh"
 
-echo "Updating stdst8 tooling"
+# Sourcing the lib for the go installation
+# shellcheck source=lib/stdst8-functions.sh
+source "${_SCRIPT_DIR}/lib/stdst8-vim.sh"
 
-stdst8.update_terraform
+# Installing Go
+stdst8.install_go
 
-echo "Update complete"
+# Installing Vim and related tooling
+stdst8.install_vim_and_tooling
+

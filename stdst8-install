@@ -37,7 +37,7 @@ stdst8.install_local_source_folder
 stdst8.clone_repo
 
 # Installing the update file
-stdst8.install_update_script
+# stdst8.install_update_script
 
 ## Trigger the update
 #echo "Restarting ${SHELL} to trigger the update"
