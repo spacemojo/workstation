@@ -1,41 +1,51 @@
 #!/bin/bash
 
+# The install script takes care of the following : 
+# - Set up the proper files and folders to store config and tools
+#   - Local bin              ~/.local/bin
+#   - Local config           ~/.config/stdst8
+#   - Local source code      ~/Src 
+# - Clone the source repo in ~/.stdst8
+# - Set up the update trigger in the ~/.zshrc file
+
 # -e  Exit immediately if a command exits with a non-zero status.
 set -e
 
-# This installs the necessary scripts, configs and folders to then run the update script.
-
 _SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" || exit 1 
-echo "Script directory : ${_SCRIPT_DIR}"
 
-# Display logo
 # Litlle bit of ascii art from http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Fraktur&t=stdst8
 cat ${_SCRIPT_DIR}/stdst8-logo                                                                                                                  
 
-# Installation
-echo "Installing the stdst8 tooling on this workstation"
+# Sourcing the vars
+# shellcheck source=lib/stdst8-variables.sh
+source "${_SCRIPT_DIR}/lib/stdst8-variables.sh"
 
 # Sourcing the lib
 # shellcheck source=lib/stdst8-functions.sh
-source "${_SCRIPT_DIR}/lib/stdst8-functions.sh"
+source "${_SCRIPT_DIR}/lib/stdst8-install.sh"
 
 # Local bin folder
-echo "Validating the local bin folder, creating if required"
 stdst8.install_local_bin_folder
-echo
+
+# Local config folder
+stdst8.install_local_config_folder
+
+# Local source dir
+stdst8.install_local_source_folder
 
 # Clone the repo to ~/.stdst8
-echo "Cloning stdst8 tooling repo"
-stdst8.clone_repo
-
-# Installing the update file
-echo "Setting automatic updates on shell startup in rc file"
-stdst8.install_update_script
-echo
-
-# Trigger the update
-echo "Restarting ${SHELL} to trigger the update"
-exec ${SHELL}
-
-# This line will never be printed !!!
-echo "Spaceballs - the script"
+#echo "Cloning stdst8 tooling repo"
+#stdst8.clone_repo
+#echo 
+#
+## Installing the update file
+#echo "Setting automatic updates on shell startup in rc file"
+#stdst8.install_update_script
+#echo
+#
+## Trigger the update
+#echo "Restarting ${SHELL} to trigger the update"
+#exec ${SHELL}
+#
+## This line will never be printed !!!
+#echo "Spaceballs - the script"

@@ -1,24 +1,16 @@
 #!/bin/bash 
 
-LOCAL_BIN="${HOME}/.local/bin"
-UPDATE_SCRIPT="stdst8-update"
-REPO_DIR="${HOME}/.stdst8"
-
-readonly TF_VERSION="1.0.6"
-readonly TF_ZIP_NAME="terraform_${TF_VERSION}_linux_amd64.zip"
-readonly TF_DOWNLOAD="https://releases.hashicorp.com/terraform/${TF_VERSION}/${TF_ZIP_NAME}"
-
-readonly GO_VERSION="1.17.1"
-readonly GO_TAR="go${GO_VERSION}.linux-amd64.tar.gz"
-readonly GO_DOWNLOAD="https://golang.org/dl/${GO_TAR}"
+# Remember! Set your global variables in the stdst8-variables.sh file
 
 stdst8.install_local_bin_folder() {
+  echo "${ST8_PREFIX}Local bin folder"
   if [[ -d ${LOCAL_BIN} ]]; then
-    echo "Local bin folder exists"
+    echo "${ST8_LOG}Local bin folder exists"
   else 
-    echo "Creating ${LOCAL_BIN} folder"
+    echo "${ST8_LOG}Creating ${LOCAL_BIN} folder"
     mkdir -p ${LOCAL_BIN}
   fi
+  echo
 }
 
 stdst8.install_update_script() {
