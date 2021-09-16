@@ -8,16 +8,14 @@ filetype plugin indent on
 call plug#begin('~/.vim/plugged')
 
 " Plug 'Valloric/YouCompleteMe'
-" Plug 'vim-airline/vim-airline'
-" Plug 'voldikss/vim-floaterm'
-" Plug 'ptzz/lf.vim'
 
+Plug 'francoiscabrol/ranger.vim'
 Plug 'baverman/vial'
 Plug 'baverman/vial-http'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'morhetz/gruvbox'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/0.x' }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " Initialize plugin system
 call plug#end()
@@ -54,15 +52,13 @@ set foldlevel=2
 " Toggle text wrapping
 nnoremap <leader>n :set nowrap!<CR>
 
-" JSON formatting with q
-nnoremap <leader>j :%!jq --indent 2 '.'<CR>
-
 " Tabs ---------------------------------------------------
 nnoremap <leader>t :tabnew<CR>
 nnoremap <leader>r :tabprev<CR>
 nnoremap <leader>y :tabnext<CR>
 nnoremap <leader>g :tabclose<CR>
-nnoremap <leader>f :tabfirst<CR>
+" Conflicts with ranger's default setting
+" nnoremap <leader>f :tabfirst<CR>
 nnoremap <leader>h :tablast<CR>
 " Tabs ---------------------------------------------------
 
@@ -75,6 +71,21 @@ nnoremap <leader>; ^xx<Esc>j
 nnoremap <leader>w :w<CR>zz
 nnoremap <leader>q :q<CR>
 nnoremap <leader>a :wqa<CR>
+
+" Moving lines
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <Esc>:m .+1<CR>==i
+inoremap <C-k> <Esc>:m .-2<CR>==i
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
+
+" Keeping search centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Vim GO
+nnoremap <leader>b :GoCoverageToggle<CR>
 
 " Git - squash remap when rebasing in interactive mode
 nnoremap <leader>s 0dwisquash <Esc>
@@ -96,12 +107,14 @@ inoremap rrr runtime.Breakpoint()
 
 " Splits -------------------------------------------------------------------------------------
 " Terminal window in the right pane
-nnoremap <leader>p :rightb vert term<CR>
+" nnoremap <leader>l :rightb vert term<CR>
 " Terminal window in the bottom pane
 nnoremap <leader>z :term<CR>
 " Vertical split on the right
-nnoremap <leader>l :vs<CR>
+" Conflicts with vim-prettier
+" nnoremap <leader>p :vs<CR>
 " Horizontal split at the bottom
+nnoremap <leader>l :vs<CR>
 nnoremap <leader>m :sp<CR>
 
 " Navigation 
@@ -111,10 +124,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Resizing 
-nnoremap <silent> <leader>x :vertical resize +3<CR>
-nnoremap <silent> <leader>v :vertical resize -3<CR>
-nnoremap <silent> <leader>d :resize +3<CR>
-nnoremap <silent> <leader>c :resize -3<CR>
+nnoremap <silent> <leader>x :vertical resize +8<CR>
+nnoremap <silent> <leader>v :vertical resize -8<CR>
+nnoremap <silent> <leader>d :resize +8<CR>
+nnoremap <silent> <leader>c :resize -8<CR>
 " Splits ----------------------------------------------------
 
 " Color Scheme ----------------------------------------------
@@ -123,10 +136,15 @@ set background=dark
 " Color Scheme ----------------------------------------------
 
 " Tabs ------------------------------------------------------
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 " vim-go
 let g:go_def_mode='gopls'
+
+" vim-ranger
+" opening ranger instead of netrw when opening dirs
+" open ranger when vim open a directory
+let g:ranger_replace_netrw = 1 
 

@@ -29,7 +29,7 @@ echo "Cloning stdst8 tooling repo"
 stdst8.clone_repo
 
 # Installing the update file
-echo "Setting automatic updates on shell startup in ~/.bashrc"
+echo "Setting automatic updates on shell startup in rc file"
 stdst8.install_update_script
 echo
 
