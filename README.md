@@ -8,7 +8,9 @@ Obviously, I won't share what is confidential and directly related to my employe
 
 ## Setting up WiFi on Pop_OS! on Dell Latitude E7250
 sudo lshw -C network
+
 sudo apt-get install bcmwl-kernel-source
+
 sudo modprobe wl
 
 ## Git
