@@ -1,11 +1,10 @@
 #!/bin/bash
 
 # The update script takes care of the following : 
-# Go installation : 
-#   - 
-# Vim installation : 
-#   - Plug
-#   - Yarnpkg (for the prettier installation)
+#   - Go
+#   - Vim updates and tooling
+#   - Brave browser
+#   - AWS cli and tooling
  
 
 # -e  Exit immediately if a command exits with a non-zero status.
@@ -21,23 +20,36 @@ cat ${_SCRIPT_DIR}/stdst8-logo
 source "${_SCRIPT_DIR}/lib/stdst8-variables.sh"
 
 # Sourcing the lib for the go installation
-# shellcheck source=lib/stdst8-functions.sh
+# shellcheck source=lib/stdst8-go.sh
 source "${_SCRIPT_DIR}/lib/stdst8-go.sh"
 
 # Sourcing the lib for the go installation
-# shellcheck source=lib/stdst8-functions.sh
+# shellcheck source=lib/stdst8-vim.sh
 source "${_SCRIPT_DIR}/lib/stdst8-vim.sh"
 
 # Sourcing the lib for the go installation
-# shellcheck source=lib/stdst8-functions.sh
+# shellcheck source=lib/stdst8-brave.sh
 source "${_SCRIPT_DIR}/lib/stdst8-brave.sh"
 
+# Sourcing the lib for the terraform installation
+# shellcheck source=lib/stdst8-terraform.sh
+source "${_SCRIPT_DIR}/lib/stdst8-terraform.sh"
+
+# Sourcing the lib for the aws installation
+# shellcheck source=lib/stdst8-aws.sh
+source "${_SCRIPT_DIR}/lib/stdst8-aws.sh"
+
 # Installing Go
-stdst8.install_go
+stdst8.update_go
 
 # Installing Vim and related tooling
 stdst8.install_vim_and_tooling
 
 # Installing Brave browser
 stdst8.install_brave_browser
+
+# Installing AWS cli and tooling
+stdst8.install_aws_tooling
+
+
 
