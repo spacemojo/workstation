@@ -15,5 +15,6 @@ stdst8.install_brave_browser() {
     echo "${ST8_PREFIX}Brave browser installed"
     echo "Installed" > "${LOCAL_CFG}/brave"
   fi
+  echo
 }
 

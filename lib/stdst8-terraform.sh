@@ -5,12 +5,12 @@
 stdst8.update_terraform() {
   C=$(which terraform | wc -l)
   if [[ ${C} -eq 1 ]]; then
-    echo "Terraform installed, checking for update"  
+    echo "${ST8_PREFIX}Terraform installed, checking for update"  
     V=$(terraform version | head -n1)
     if [[ ${V} == *"${TF_VERSION}"* ]]; then
-      echo "Current Terraform version (${TF_VERSION}) is the latest"
+      echo "${ST8_PREFIX}Current Terraform version (${TF_VERSION}) is the latest"
     else 
-      echo "Updating Terraform to version ${TF_VERSION}"
+      echo "${ST8_PREFIX}Updating Terraform to version ${TF_VERSION}"
       rm "${LOCAL_BIN}/terraform"
       stdst8.install_terraform
     fi

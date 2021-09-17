@@ -32,6 +32,10 @@ source "${_SCRIPT_DIR}/lib/stdst8-brave.sh"
 # shellcheck source=lib/stdst8-terraform.sh
 source "${_SCRIPT_DIR}/lib/stdst8-terraform.sh"
 
+# Sourcing the lib for the brew installation
+# shellcheck source=lib/stdst8-brew.sh
+source "${_SCRIPT_DIR}/lib/stdst8-brew.sh"
+
 # Sourcing the lib for the aws installation
 # shellcheck source=lib/stdst8-aws.sh
 source "${_SCRIPT_DIR}/lib/stdst8-aws.sh"
@@ -47,6 +51,9 @@ stdst8.install_brave_browser
 
 # Install / update terraform
 stdst8.update_terraform
+
+# Install brew
+stdst8.install_brew
 
 # Installing AWS cli and tooling
 stdst8.install_aws_tooling

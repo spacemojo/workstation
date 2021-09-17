@@ -15,5 +15,6 @@ stdst8.install_vim_and_tooling() {
     cp "${REPO_DIR}/vim/vimrc" "${HOME}/.vimrc"
     echo "Installed" > "${LOCAL_CFG}/vim" 
   fi
+  echo
 }
 
