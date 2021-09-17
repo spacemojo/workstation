@@ -12,9 +12,6 @@ set -e
 
 _SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" || exit 1 
 
-# Litlle bit of ascii art from http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Fraktur&t=stdst8
-cat ${_SCRIPT_DIR}/stdst8-logo                                                                                                                  
-
 # Sourcing the vars
 # shellcheck source=lib/stdst8-variables.sh
 source "${_SCRIPT_DIR}/lib/stdst8-variables.sh"
@@ -48,8 +45,13 @@ stdst8.install_vim_and_tooling
 # Installing Brave browser
 stdst8.install_brave_browser
 
+# Install / update terraform
+stdst8.update_terraform
+
 # Installing AWS cli and tooling
 stdst8.install_aws_tooling
 
+# Litlle bit of ascii art from http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Fraktur&t=stdst8
+cat ${_SCRIPT_DIR}/stdst8-logo
 
 

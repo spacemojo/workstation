@@ -15,7 +15,7 @@ readonly UPDATE_SCRIPT="stdst8-update"
 readonly REPO_DIR="${HOME}/.stdst8"
 
 # Terraform
-readonly TF_VERSION="1.0.6"
+readonly TF_VERSION="1.0.7"
 readonly TF_ZIP_NAME="terraform_${TF_VERSION}_linux_amd64.zip"
 readonly TF_DOWNLOAD="https://releases.hashicorp.com/terraform/${TF_VERSION}/${TF_ZIP_NAME}"
 
