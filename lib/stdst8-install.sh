@@ -58,18 +58,20 @@ stdst8.install_update_script() {
     chmod +x "${REPO_DIR}/${UPDATE_SCRIPT}" 
   fi
 
+  cp "${_SCRIPT_DIR}/stdst8-trigger-update" "${LOCAL_BIN}"
+
   # Find out which shell 
   TARGET_RC="${HOME}/.bashrc"
-  if [[ "${SHELL}" = "/bin/zsh" ]]; then
+  if [[ "${SHELL}" == *"zsh"* ]]; then
     TARGET_RC="${HOME}/.zshrc"
   fi
 
-  C=$(grep "${UPDATE_SCRIPT}" "${TARGET_RC}" | wc -l)
+  C=$(grep "stdst8-trigger-update" "${TARGET_RC}" | wc -l)
   if [[ ${C} -eq 1 ]]; then
-    echo "No rc update required to ${TARGET_RC}"
+    echo "${ST8_LOG}No rc update required to ${TARGET_RC}"
   else 
-    echo "${REPO_DIR}/${UPDATE_SCRIPT}" >> ${TARGET_RC}
-    echo "${TARGET_RC} updated"
+    echo "${UPDATE_TRIGGER}" >> ${TARGET_RC}
+    echo "${ST8_LOG}${TARGET_RC} updated"
   fi
   
 }

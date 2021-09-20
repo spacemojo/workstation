@@ -12,6 +12,7 @@ readonly LOCAL_BIN="${HOME}/.local/bin"
 readonly LOCAL_CFG="${HOME}/.config/stdst8"
 readonly LOCAL_SRC="${HOME}/Src"
 readonly UPDATE_SCRIPT="stdst8-update"
+readonly UPDATE_TRIGGER="${LOCAL_BIN}/stdst8-trigger-update"
 readonly REPO_DIR="${HOME}/.stdst8"
 
 # Terraform
