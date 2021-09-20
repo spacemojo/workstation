@@ -4,8 +4,10 @@
 #   - Go
 #   - Vim updates and tooling
 #   - Brave browser
+#   - Homebrew for linux
+#   - Terraform
 #   - AWS cli and tooling
- 
+#   - KDE kwallet
 
 # -e  Exit immediately if a command exits with a non-zero status.
 set -e
@@ -40,6 +42,10 @@ source "${_SCRIPT_DIR}/lib/stdst8-brew.sh"
 # shellcheck source=lib/stdst8-aws.sh
 source "${_SCRIPT_DIR}/lib/stdst8-aws.sh"
 
+# Sourcing the lib for the aws installation
+# shellcheck source=lib/stdst8-kwallet.sh
+source "${_SCRIPT_DIR}/lib/stdst8-kwallet.sh"
+
 # Installing Go
 stdst8.update_go
 
@@ -57,6 +63,9 @@ stdst8.install_brew
 
 # Installing AWS cli and tooling
 stdst8.install_aws_tooling
+
+# Installing KDE Wallet
+stdst8.install_kwallet
 
 # Litlle bit of ascii art from http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Fraktur&t=stdst8
 cat ${_SCRIPT_DIR}/stdst8-logo
