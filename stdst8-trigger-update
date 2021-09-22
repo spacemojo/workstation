@@ -5,6 +5,7 @@ _SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" || exit 1
 pushd "${_SCRIPT_DIR}"
 
 cd ~/.stdst8
+git pull
 ./stdst8-update
 
 popd
