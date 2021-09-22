@@ -3,6 +3,7 @@
 # Remember! Set your global variables in the stdst8-variables.sh file
 
 stdst8.install_ffmpeg() {
+  echo "${ST8_PREFIX}Checking ffmpeg"
   if [[ -a "${LOCAL_CFG}/ffmpeg" ]]; then
     echo "${ST8_PREFIX}ffmpeg installed, skipping"  
   else 
