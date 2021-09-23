@@ -7,8 +7,9 @@
 #   - Homebrew for linux
 #   - Terraform
 #   - AWS cli and tooling
-#   - KDE kwallet
+#   - KDE kwallet (for aws-vault)
 #   - ffmpeg
+#   - obs studio
 #
 # -e  Exit immediately if a command exits with a non-zero status.
 set -e
@@ -18,6 +19,10 @@ _SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" || exit 1
 # Sourcing the vars
 # shellcheck source=lib/stdst8-variables.sh
 source "${_SCRIPT_DIR}/lib/stdst8-variables.sh"
+
+# Sourcing the general functions
+# shellcheck source=lib/stdst8-functions.sh
+source "${_SCRIPT_DIR}/lib/stdst8-functions.sh"
 
 # Sourcing the lib for the go installation
 # shellcheck source=lib/stdst8-go.sh
@@ -39,22 +44,6 @@ source "${_SCRIPT_DIR}/lib/stdst8-terraform.sh"
 # shellcheck source=lib/stdst8-brew.sh
 source "${_SCRIPT_DIR}/lib/stdst8-brew.sh"
 
-# Sourcing the lib for the aws installation
-# shellcheck source=lib/stdst8-aws.sh
-source "${_SCRIPT_DIR}/lib/stdst8-aws.sh"
-
-# Sourcing the lib for the aws installation
-# shellcheck source=lib/stdst8-kwallet.sh
-source "${_SCRIPT_DIR}/lib/stdst8-kwallet.sh"
-
-# Sourcing the lib for the aws installation
-# shellcheck source=lib/stdst8-ffmpeg.sh
-source "${_SCRIPT_DIR}/lib/stdst8-ffmpeg.sh"
-
-# Sourcing the lib for the aws installation
-# shellcheck source=lib/stdst8-obs.sh
-source "${_SCRIPT_DIR}/lib/stdst8-obs.sh"
-
 # Installing Go
 stdst8.update_go
 
@@ -70,17 +59,11 @@ stdst8.update_terraform
 # Install brew
 stdst8.install_brew
 
-# Installing AWS cli and tooling
-stdst8.install_aws_tooling
+# Installing apt packages
+stdst8.apt_install "awscli" "kwalletmanager" "kwalletcli" "ffmpeg" "obs-studio"
 
-# Installing KDE Wallet
-stdst8.install_kwallet
-
-# Install ffmpeg
-stdst8.install_ffmpeg
-
-# Install obs
-stdst8.install_obs
+# Installing brew packages
+stdst8.brew_install "aws-vault"
 
 # Litlle bit of ascii art from http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Fraktur&t=stdst8
 cat ${_SCRIPT_DIR}/stdst8-logo
