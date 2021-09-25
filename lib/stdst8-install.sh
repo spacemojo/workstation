@@ -25,6 +25,17 @@ stdst8.install_local_config_folder() {
   echo
 }
 
+stdst8.install_local_log_folder() {
+  echo "${ST8_PREFIX}Local log folder"
+  if [[ -d "${LOCAL_LOG}" ]]; then
+    echo "${ST8_LOG}${LOCAL_LOG} exists"
+  else 
+    echo "${ST8_LOG}Creating ${LOCAL_LOG} folder"
+    mkdir -p ${LOCAL_LOG}
+  fi
+  echo
+}
+
 stdst8.install_local_source_folder() {
   echo "${ST8_PREFIX}Local source code folder"
   if [[ -d ${LOCAL_SRC} ]]; then

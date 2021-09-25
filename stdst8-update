@@ -66,6 +66,6 @@ stdst8.apt_install "awscli" "kwalletmanager" "kwalletcli" "ffmpeg" "obs-studio" 
 stdst8.brew_install "aws-vault"
 
 # Litlle bit of ascii art from http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Fraktur&t=stdst8
-cat ${_SCRIPT_DIR}/stdst8-logo
+cat "${_SCRIPT_DIR}/stdst8-logo"
 
 
