@@ -60,7 +60,7 @@ stdst8.update_terraform
 stdst8.install_brew
 
 # Installing apt packages
-stdst8.apt_install "awscli" "kwalletmanager" "kwalletcli" "ffmpeg" "obs-studio"
+stdst8.apt_install "awscli" "kwalletmanager" "kwalletcli" "ffmpeg" "obs-studio" "shellcheck"
 
 # Installing brew packages
 stdst8.brew_install "aws-vault"
