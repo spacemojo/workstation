@@ -3,9 +3,10 @@
 # Remember! Set your global variables in the stdst8-variables.sh file
 
 stdst8.apt_install() {
-  local pkgs=("$@")
+  local pkgs=($(cat "${REPO_DIR}/apt-packages"))
   for name in "${pkgs[@]}"; 
   do 
+    echo "CURRENT PACKAGE: ${name}"
     local LOG="${LOCAL_LOG}/${name}";
     echo "${ST8_PREFIX}Ckecking apt package ${name}" > "${LOG}";
     if [[ -a "${LOCAL_CFG}/${name}" ]]; then
