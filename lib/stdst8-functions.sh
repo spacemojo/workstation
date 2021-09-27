@@ -20,17 +20,17 @@ stdst8.apt_install() {
   done;
 }
 
-stdst8.brew_install() {
+stdst8.snap_install() {
   local pkgs=("$@")
   for name in "${pkgs[@]}"; 
   do 
     local LOG="${LOCAL_LOG}/${name}";
-    echo "${ST8_PREFIX}Ckecking brew package ${name}" > "${LOG}";
+    echo "${ST8_PREFIX}Ckecking snap package ${name}" > "${LOG}";
     if [[ -a "${LOCAL_CFG}/${name}" ]]; then
       echo "${ST8_PREFIX}${name} installed, skipping"  > "${LOG}"; 
     else 
       echo "${ST8_PREFIX}Installing ${name}" > "${LOG}";
-      brew install "${name}";
+      sudo snap install "${name}" --classic
       echo "Installed" > "${LOCAL_CFG}/${name}";
     fi
     echo

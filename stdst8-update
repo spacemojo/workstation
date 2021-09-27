@@ -65,6 +65,9 @@ stdst8.apt_install "awscli" "kwalletmanager" "kwalletcli" "ffmpeg" "obs-studio" 
 # Installing brew packages
 stdst8.brew_install "aws-vault"
 
+# Installing snap packages
+stdst8.brew_install "slack"
+
 # Litlle bit of ascii art from http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Fraktur&t=stdst8
 cat "${_SCRIPT_DIR}/stdst8-logo"
 
