@@ -44,6 +44,10 @@ source "${_SCRIPT_DIR}/lib/stdst8-terraform.sh"
 # shellcheck source=lib/stdst8-brew.sh
 source "${_SCRIPT_DIR}/lib/stdst8-brew.sh"
 
+# Sourcing the lib for the brew installation
+# shellcheck source=lib/stdst8-paperwm.sh
+source "${_SCRIPT_DIR}/lib/stdst8-paperwm.sh"
+
 # Installing Go
 stdst8.update_go
 
@@ -67,6 +71,9 @@ stdst8.brew_install "aws-vault"
 
 # Installing snap packages
 stdst8.snap_install "slack"
+
+# Installing PaperWM from source
+stdst8.install_paperwm
 
 # Litlle bit of ascii art from http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Fraktur&t=stdst8
 cat "${_SCRIPT_DIR}/stdst8-logo"
