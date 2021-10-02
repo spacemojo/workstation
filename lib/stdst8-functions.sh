@@ -71,3 +71,7 @@ stdst8.pip_install() {
   done;
 }
 
+stdst8.update_aliases() {
+  # not much to do here so let's go the long way for now
+  echo "alias rr='ranger'" >> "${HOME}/.alias"
+}

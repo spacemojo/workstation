@@ -63,6 +63,9 @@ stdst8.brew_install "aws-vault"
 stdst8.snap_install "slack"
 stdst8.pip_install "ranger-fm"
 
+# Aliases
+stdst8.update_aliases
+
 # Litlle bit of ascii art from http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Fraktur&t=stdst8
 cat "${_SCRIPT_DIR}/stdst8-logo"
 
