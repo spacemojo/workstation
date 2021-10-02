@@ -57,14 +57,11 @@ stdst8.update_terraform
 # Install brew
 stdst8.install_brew
 
-# Installing apt packages
+# Installing packages
 stdst8.apt_install 
-
-# Installing brew packages
 stdst8.brew_install "aws-vault"
-
-# Installing snap packages
 stdst8.snap_install "slack"
+stdst8.pip_install "ranger-fm"
 
 # Litlle bit of ascii art from http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Fraktur&t=stdst8
 cat "${_SCRIPT_DIR}/stdst8-logo"

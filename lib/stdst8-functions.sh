@@ -54,4 +54,20 @@ stdst8.snap_install() {
   done;
 }
 
+stdst8.pip_install() {
+  local pkgs=("$@")
+  for name in "${pkgs[@]}"; 
+  do 
+    local LOG="${LOCAL_LOG}/${name}";
+    echo "${ST8_PREFIX}Ckecking pip package ${name}" > "${LOG}";
+    if [[ -a "${LOCAL_CFG}/${name}" ]]; then
+      echo "${ST8_PREFIX}${name} installed, skipping"  > "${LOG}"; 
+    else 
+      echo "${ST8_PREFIX}Installing ${name}" > "${LOG}";
+      pip install "${name}";
+      echo "Installed" > "${LOCAL_CFG}/${name}";
+    fi
+    echo
+  done;
+}
 
