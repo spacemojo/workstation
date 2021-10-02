@@ -73,5 +73,9 @@ stdst8.pip_install() {
 
 stdst8.update_aliases() {
   # not much to do here so let's go the long way for now
-  echo "alias rr='ranger'" >> "${HOME}/.alias"
+  C=$(cat ~/.alias | grep "ranger" | wc -l)
+  if [[ "${C}" -eq 0 ]]; then
+    echo "${STD_PREFIX}Adding rr alias to call ranger";
+    echo "alias rr='ranger'" >> "${HOME}/.alias"
+  fi
 }
