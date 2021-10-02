@@ -7,9 +7,7 @@
 #   - Homebrew for linux
 #   - Terraform
 #   - AWS cli and tooling
-#   - KDE kwallet (for aws-vault)
-#   - ffmpeg
-#   - obs studio
+#   - a bunch of apt, brew and snap packages
 #
 # -e  Exit immediately if a command exits with a non-zero status.
 set -e
