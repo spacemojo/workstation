@@ -3,7 +3,7 @@
 # Remember! Set your global variables in the stdst8-variables.sh file
 
 stdst8.update_go() {
-  C=$(which go | wc -l)
+  local C=$(which go | wc -l)
   if [[ "${C}" -eq 1 ]]; then
     echo "${ST8_PREFIX}Go installed, checking for update"
     V=$(go version)

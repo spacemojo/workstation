@@ -3,7 +3,7 @@
 # Remember! Set your global variables in the stdst8-variables.sh file
 
 stdst8.update_terragrunt() {
-  C=$(which terragrunt | wc -l)
+  local C=$(which terragrunt | wc -l)
   if [[ ${C} -eq 1 ]]; then
     echo "${ST8_PREFIX}Terragrunt installed, checking for update"  
     V=$(terragrunt --version | head -n1)

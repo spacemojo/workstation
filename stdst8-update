@@ -43,6 +43,10 @@ source "${_SCRIPT_DIR}/lib/stdst8-brave.sh"
 # shellcheck source=lib/stdst8-terraform.sh
 source "${_SCRIPT_DIR}/lib/stdst8-terraform.sh"
 
+# Sourcing the lib for the packer installation
+# shellcheck source=lib/stdst8-packer.sh
+source "${_SCRIPT_DIR}/lib/stdst8-packer.sh"
+
 # Sourcing the lib for the terragrunt installation
 # shellcheck source=lib/stdst8-terragrunt.sh
 source "${_SCRIPT_DIR}/lib/stdst8-terragrunt.sh"
@@ -62,6 +66,9 @@ stdst8.install_brave_browser
 
 # Install / update terraform
 stdst8.update_terraform
+
+# Install / update packer 
+dst8.update_packer
 
 # Install / update terragrunt
 stdst8.update_terragrunt

@@ -3,7 +3,7 @@
 # Remember! Set your global variables in the stdst8-variables.sh file
 
 stdst8.update_terraform() {
-  C=$(which terraform | wc -l)
+  local C=$(which terraform | wc -l)
   if [[ ${C} -eq 1 ]]; then
     echo "${ST8_PREFIX}Terraform installed, checking for update"  
     V=$(terraform version | head -n1)

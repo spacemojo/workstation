@@ -26,6 +26,11 @@ readonly TG_VERSION="v0.34.0"
 readonly TG_BIN_NAME="terragrunt_linux_amd64"
 readonly TG_DOWNLOAD="https://github.com/gruntwork-io/terragrunt/releases/download/${TG_VERSION}/terragrunt_linux_amd64"
 
+# Packer 
+readonly PKR_VERSION="1.7.6"
+readonly PKR_ZIP_NAME="packer_${PKR_VERSION}_linux_amd64.zip"
+readonly PKR_DOWNLOAD="https://releases.hashicorp.com/packer/${PKR_VERSION}/${PKR_ZIP_NAME}"
+
 # Go
 readonly GO_VERSION="1.17.1"
 readonly GO_TAR="go${GO_VERSION}.linux-amd64.tar.gz"
