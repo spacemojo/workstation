@@ -21,6 +21,11 @@ readonly TF_VERSION="1.0.7"
 readonly TF_ZIP_NAME="terraform_${TF_VERSION}_linux_amd64.zip"
 readonly TF_DOWNLOAD="https://releases.hashicorp.com/terraform/${TF_VERSION}/${TF_ZIP_NAME}"
 
+# Terragrunt
+readonly TG_VERSION="v0.34.0"
+readonly TG_BIN_NAME="terragrunt_linux_amd64"
+readonly TG_DOWNLOAD="https://github.com/gruntwork-io/terragrunt/releases/download/${TG_VERSION}/terragrunt_linux_amd64"
+
 # Go
 readonly GO_VERSION="1.17.1"
 readonly GO_TAR="go${GO_VERSION}.linux-amd64.tar.gz"
