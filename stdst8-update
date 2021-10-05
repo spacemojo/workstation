@@ -8,6 +8,7 @@
 #   - Terraform
 #   - Terragrunt
 #   - AWS cli and tooling
+#   - Docker
 #   - a bunch of apt, brew and snap packages
 #
 # -e              Exit immediately if a command exits with a non-zero status.
@@ -55,6 +56,10 @@ source "${_SCRIPT_DIR}/lib/stdst8-terragrunt.sh"
 # shellcheck source=lib/stdst8-brew.sh
 source "${_SCRIPT_DIR}/lib/stdst8-brew.sh"
 
+# Sourcing the lib for the brew installation
+# shellcheck source=lib/stdst8-docker.sh
+source "${_SCRIPT_DIR}/lib/stdst8-docker.sh"
+
 # Installing Go
 stdst8.update_go
 
@@ -68,13 +73,16 @@ stdst8.install_brave_browser
 stdst8.update_terraform
 
 # Install / update packer 
-dst8.update_packer
+stdst8.update_packer
 
 # Install / update terragrunt
 stdst8.update_terragrunt
 
 # Install brew
 stdst8.install_brew
+
+# Install docker
+stdst8.install_docker
 
 # Installing packages
 stdst8.apt_install 
