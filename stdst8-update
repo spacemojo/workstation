@@ -88,7 +88,7 @@ stdst8.install_docker
 stdst8.apt_install 
 stdst8.brew_install "aws-vault"
 stdst8.snap_install "slack"
-stdst8.pip_install "ranger-fm"
+stdst8.pip_install "ranger-fm" "mkdocs"
 
 # Aliases
 stdst8.update_aliases
