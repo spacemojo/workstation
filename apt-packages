@@ -10,3 +10,5 @@ pop-shell
 python3-pip
 ansible
 expect
+sshpass
+meld
