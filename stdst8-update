@@ -10,7 +10,7 @@
 #   - AWS cli and tooling
 #   - Docker
 #   - a bunch of apt, brew and snap packages
-#
+
 # -e              Exit immediately if a command exits with a non-zero status.
 # -u              Treat unset variables as an error when substituting.
 # -o pipefail     The return value of a pipeline is the status of
@@ -32,9 +32,13 @@ source "${_SCRIPT_DIR}/lib/stdst8-functions.sh"
 # shellcheck source=lib/stdst8-go.sh
 source "${_SCRIPT_DIR}/lib/stdst8-go.sh"
 
-# Sourcing the lib for the go installation
+# Sourcing the lib for the vim installation
 # shellcheck source=lib/stdst8-vim.sh
 source "${_SCRIPT_DIR}/lib/stdst8-vim.sh"
+
+# Sourcing the lib for the git installation
+# shellcheck source=lib/stdst8-git.sh
+source "${_SCRIPT_DIR}/lib/stdst8-git.sh"
 
 # Sourcing the lib for the go installation
 # shellcheck source=lib/stdst8-brave.sh
@@ -65,6 +69,9 @@ stdst8.update_go
 
 # Installing Vim and related tooling
 stdst8.install_vim_and_tooling
+
+# Setting up Git configurations and templates 
+stdst8.git_set_commit_template
 
 # Installing Brave browser
 stdst8.install_brave_browser
