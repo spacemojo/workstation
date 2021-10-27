@@ -1,0 +1,30 @@
+[default]
+region = ca-central-1
+
+[profile standardstate]
+aws_account_id=standardstate
+console_url=https://standardstate.signin.aws.amazon.com/console
+mfa_serial=arn:aws:iam::581673937124:mfa/frederic.leclerc
+region=ca-central-1
+
+[profile aixbro]
+color=b42fce
+aws_account_id=471456741860
+region=eu-central-1
+role_arn=arn:aws:iam::471456741860:role/aixbro-prd-admin
+source_profile=standardstate
+
+[profile oneboard]
+color=b42fce
+aws_account_id=657648752751
+region=eu-central-1
+role_arn=arn:aws:iam::657648752751:role/oneboard-prd-admin
+source_profile=standardstate
+
+[profile stdst8]
+color=b42fce
+aws_account_id=651519092440
+region=ca-central-1
+role_arn=arn:aws:iam::651519092440:role/stdst8-admin
+source_profile=standardstate
+

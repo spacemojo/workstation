@@ -6,7 +6,7 @@ stdst8.update_packer() {
   local C=$(which packer | wc -l)
   if [[ ${C} -eq 1 ]]; then
     echo "${ST8_PREFIX}Packer installed, checking for update"  
-    V=$(packer version | head -n1)
+    local V=$(packer version | head -n1)
     if [[ ${V} == *"${PKR_VERSION}"* ]]; then
       echo "${ST8_PREFIX}Current Packer version (${PKR_VERSION}) is the latest"
     else 
