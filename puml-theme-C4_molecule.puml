@@ -1,6 +1,3 @@
-!$THEME = "C4_molecule"
-!$THEME_NAME = "C4_molecule"
-
 !$ELEMENT_FONT_COLOR ?= "#FFFFFF"
 
 !$PERSON_FONT_COLOR ?= "#000000"
